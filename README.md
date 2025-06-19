@@ -17,8 +17,24 @@
 
 1) Log into AWS console 
 2) Create Key pairs used to log into EC2 
+
+    - Created key pair using the .pem format since we would be accessing Instances using git bash / WSL. 
+
 3) Create Security groups for Load Balancers, tomcat and backend services
+
+    - Created 3 different security groups 
+        - vprofile-ELB-SG - This is the security group for Elastic Load balancer. Allows TCP traffic from ports 80 and 443. HTTP and HTTP protocol respctively. Source is from anywhere (0.0.0.0/0)
+        - vprofile-app-SG - This is the application level security group. Allows TCP traffic from port 8080 tomcat service and SSH protocol on port 22 for remote log in. Source is from ELB-SG.
+        - vprofile-backend-SG - This is the SG for backend services allows traffic on ports 3306 - MySQL, 11211 - Rabbitmq and 5672 - Memcache. Source is from app SG. Port 22 for SSH remote connect
+
 4) Launch instances with user-data (Bash scripts)
+
+    - Created 4 VMs or EC2 instances for the 4 different services needed by the application. AMI used was the centos 9 OS and Ubuntu os. 
+        - EC2 Tomcat - 
+        - EC2 
+        - EC2 
+        - EC2
+        
 5) Update IP addresses to name mapping in route 53 
 6) Build Application locally from source code 
 7) Upload to S3 bucket 
