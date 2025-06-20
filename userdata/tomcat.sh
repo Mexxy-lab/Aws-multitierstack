@@ -37,6 +37,8 @@ systemctl enable tomcat
 
 git clone -b vp-rem https://github.com/devopshydclub/vprofile-repo.git
 cd vprofile-repo
+sudo alternatives --set java /usr/lib/jvm/java-11-openjdk-11.0.20.1.1-2.el9.x86_64/bin/java
+sudo alternatives --set javac /usr/lib/jvm/java-11-openjdk-11.0.20.1.1-2.el9.x86_64/bin/javac
 mvn install
 systemctl stop tomcat
 sleep 120
@@ -44,5 +46,5 @@ rm -rf /usr/local/tomcat8/webapps/ROOT*
 cp target/vprofile-v2.war /usr/local/tomcat8/webapps/ROOT.war
 systemctl start tomcat
 sleep 300
-cp /vprofile-vm-data/application.properties /usr/local/tomcat8/webapps/ROOT/WEB-INF/classes/application.properties
+#cp /vprofile-vm-data/application.properties /usr/local/tomcat8/webapps/ROOT/WEB-INF/classes/application.properties
 systemctl restart tomcat8
