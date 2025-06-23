@@ -96,12 +96,18 @@
 
     - First create a Target group - This is the group you want your loadbalancer to route traffic to.
         - vprofile-app-TG open port 8080 for the tomcat application service. Also set the healtchecks and unhealthy threshold.
-        - Create the ELB and attach the target group created, also update the security group ELB SG. 
+        - Attach the instance vprofile-app01 running our application to the target group.
+        - Create the ELB and attach the target group created, also update the security group ELB SG. Use the application load balancer 
+        - It should listen on port 80 and route traffic to the vprofile-app-TG target group which points to the instance vprofile-app01. 
 
 10) Create the Autoscaling group 
 
-    - First create the image instance 
-11) Verify the infra set up 
-12) Build Autoscaling Group for Tomcat Instances.
+    - Autoscaling group are basically meant to increase the number of instances 
+    - Now we create the Autoscaling group needed for the application, to do this we need 2 things 
+        - We need to first create the AMI of the Instance. Create this from AMI resource.
+        - Create the luanch template specifying the above AMI of the instance 
+        - Then create the auto-scaling group.
+
+11) Verify the infra set up
 
 
