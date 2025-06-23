@@ -111,3 +111,4 @@
 11) Verify the infra set up
 
 
+![alt text](image.png)
